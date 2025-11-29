@@ -1,5 +1,6 @@
+// src/components/portfolio/AboutSection.jsx 的全部代码
 import React from 'react';
-import PhotoGallery from './PhotoGallery';
+// 原来的 import PhotoGallery from './PhotoGallery'; 已经被移除
 
 export default function AboutSection() {
   return (
@@ -28,8 +29,7 @@ export default function AboutSection() {
         </p>
       </div>
 
-      {/* Photo Gallery */}
-      <PhotoGallery />
+      {/* 原来的 <PhotoGallery /> 已经被移除 */}
     </section>
   );
 }

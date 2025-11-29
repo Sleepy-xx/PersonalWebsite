@@ -3,7 +3,7 @@ import { MapPin, Mail, Github, Linkedin } from 'lucide-react';
 
 export default function ProfileSidebar() {
   return (
-    <aside className="w-full lg:w-80 lg:min-h-screen bg-[#1e1e1e] rounded-3xl p-8 flex flex-col">
+    <aside className="w-full lg:w-80 bg-[#1e1e1e] rounded-3xl p-8 flex flex-col">
       {/* Profile Image */}
       <div className="flex justify-center mb-6">
         <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-400 to-orange-500">

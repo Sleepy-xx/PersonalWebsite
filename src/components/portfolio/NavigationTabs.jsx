@@ -4,8 +4,6 @@ import { cn } from '@/lib/utils';
 const tabs = [
   { id: 'about', label: 'About' },
   { id: 'resume', label: 'Resume' },
-  { id: 'project', label: 'Project' },
-  { id: 'blog', label: 'Blog' },
   { id: 'gallery', label: 'Gallery' },
 ];
 

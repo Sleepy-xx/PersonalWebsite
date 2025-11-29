@@ -16,26 +16,11 @@ export default function Home() {
     switch (activeTab) {
       case 'about':
         return (
-          <div className="space-y-16">
-            {/* 1. 个人简介 (全宽) */}
+          <>
             <AboutSection />
-            
-            {/* 2. 精选项目 (全宽) */}
-            <ProjectsSection />
-            
-            {/* 3. 左右布局区域：左边是博客，右边是技术栈 */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* 左侧：文章列表 (占据 2/3 宽度) */}
-              <div className="lg:col-span-2">
-                <BlogSection />
-              </div>
-
-              {/* 右侧：技术栈卡片 (占据 1/3 宽度) */}
-              <div className="lg:col-span-1">
-                <TechStackSection />
-              </div>
-            </div>
-          </div>
+            {/* 原来的 ProjectsSection 和 BlogSection 已经被移除 */}
+            <TechStackSection />
+          </>
         );
       case 'resume':
         return <ResumeSection />;
