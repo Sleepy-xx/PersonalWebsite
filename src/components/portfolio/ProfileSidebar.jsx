@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Mail, Github, Linkedin } from 'lucide-react';
+import { MapPin, Mail, Github, Linkedin, Phone } from 'lucide-react';
 
 export default function ProfileSidebar() {
   return (
@@ -56,6 +56,13 @@ export default function ProfileSidebar() {
           label="LINKEDIN"
           value="Connect"
           href="#"
+        />
+        {/* 新增的电话部分 */}
+        <ContactItem 
+          icon={Phone}
+          label="PHONE"
+          value="(+852) 52662629"
+          href="tel:+85252662629"
         />
       </div>
 
