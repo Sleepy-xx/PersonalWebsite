@@ -37,10 +37,10 @@ export default function Home() {
       {/* 2. 核心布局容器 */}
       {/* mt-[60px]: 真正的 Margin，不再是 Padding */}
       {/* w-full max-w-[1200px]: 严格控制宽度 */}
-      <div className="w-full max-w-[1200px] mt-[60px] mb-[15px] flex flex-col lg:flex-row gap-6 px-4 lg:px-0">
+      <div className="w-full max-w-[1200px] mt-[60px] mb-[15px] ml-[414px] mr-[414px] flex flex-col lg:flex-row gap-6 px-4 lg:px-0">
         
         {/* 3. 左侧 Sidebar */}
-        <aside className="w-full lg:w-[280px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10">
+        <aside className="w-full lg:w-[280px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10 pt-[60px] pl-[30px] pr-[30px] pb[30px]">
           <ProfileSidebar />
         </aside>
 
