@@ -14,7 +14,7 @@ export default function Home() {
     switch (activeTab) {
       case 'about':
         return (
-          <div className="space-y-10">
+          <div className="space-y-16">
             <AboutSection />
             <TechStackSection />
           </div>
@@ -29,18 +29,27 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212] flex justify-center items-start pt-[60px] pb-[15px]">
+    // 1. 页面容器
+    // pt-[60px]: 对应 sidebar 的 padding-top: 60px 预留空间
+    <div className="min-h-screen bg-[#0d0d0d] pt-[60px] pb-[15px]">
       
-      {/* 主布局容器 - 强制 1200px 宽度并居中 */}
-      <div className="w-full max-w-[1200px] flex flex-col lg:flex-row gap-6 px-4 lg:px-0">
+      {/* 2. 主布局容器 (Main) */}
+      {/* max-w-[1200px]: 对应 max-width: 1200px */}
+      {/* gap-[25px]: 对应 gap: 25px */}
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-[25px] px-4 lg:px-0">
         
-        {/* 左侧 Sidebar - 固定宽度 280px */}
-        <aside className="w-full lg:w-[280px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10">
+        {/* 3. 左侧 Sidebar 区域 */}
+        {/* lg:sticky: 对应 position: sticky (仅在大屏生效) */}
+        {/* lg:top-[60px]: 对应 top: 60px */}
+        {/* z-10: 对应 z-index: 1 */}
+        {/* lg:self-start: 关键！防止 flex stretch 导致 sticky 失效 */}
+        <div className="lg:sticky lg:top-[60px] lg:self-start z-10 lg:w-[320px] shrink-0">
           <ProfileSidebar />
-        </aside>
+        </div>
 
-        {/* 右侧 Main Content - 自动填满剩余空间 */}
-        <main className="flex-1 bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] p-[30px] shadow-lg min-w-0">
+        {/* 4. 右侧内容区域 (Main Content) */}
+        {/* flex-1: 占据剩余空间 */}
+        <main className="flex-1 bg-[#1a1a1a] rounded-3xl p-6 lg:p-10 min-w-0">
           <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
           {renderContent()}
         </main>
