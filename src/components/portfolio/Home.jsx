@@ -29,24 +29,24 @@ export default function Home() {
   };
 
   return (
-    // 1. 视口容器：flex justify-center 实现整体居中
-    // pt-[60px] pb-[15px]: 保持上下的间距
-    <div className="min-h-screen bg-[#121212] flex justify-center items-start pt-[60px] pb-[15px]">
+    // 1. 最外层视口容器
+    // 使用 flex-col + items-center 替代简单的 block 布局
+    // 这样内部元素使用 margin-top 时，不会导致"外边距合并"产生的顶部白条
+    <div className="min-h-screen bg-[#121212] flex flex-col items-center isolate">
       
-      {/* 2. 核心布局容器：宽度死锁为 1200px */}
-      {/* max-w-[1200px]: 限制最大宽度，配合 justify-center 自然形成左右约 400px+ 的留白 (Margin) */}
-      {/* gap-[25px]: 强制拉开左栏和右栏的距离，解决"连在一起"的问题 */}
-      <div className="w-full max-w-[1200px] flex flex-col lg:flex-row gap-[25px] px-4 lg:px-0">
+      {/* 2. 核心布局容器 */}
+      {/* mt-[60px]: 真正的 Margin，不再是 Padding */}
+      {/* w-full max-w-[1200px]: 严格控制宽度 */}
+      <div className="w-full max-w-[1200px] mt-[60px] mb-[15px] flex flex-col lg:flex-row gap-6 px-4 lg:px-0">
         
-        {/* 3. 左侧 Sidebar：固定宽度 */}
-        {/* w-full lg:w-auto: 移除之前的 width:25% 限制，让它由内容或固定值决定 */}
-        {/* shrink-0: 防止被右侧挤压 */}
-        <aside className="w-full lg:w-[280px] xl:w-[300px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10">
+        {/* 3. 左侧 Sidebar */}
+        <aside className="w-full lg:w-[280px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10">
           <ProfileSidebar />
         </aside>
 
-        {/* 4. 右侧 Main Content：自动填满剩余空间 */}
-        {/* flex-1: 占据除去 Sidebar 和 Gap 后的所有空间，不再强制 w-[75%] 导致溢出 */}
+        {/* 4. 右侧 Main Content */}
+        {/* flex-1: 自动填满剩余宽度 */}
+        {/* min-w-0: 防止 Flex 子元素溢出 */}
         <main className="flex-1 bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] p-[30px] shadow-lg min-w-0">
           <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
           {renderContent()}
