@@ -8,7 +8,7 @@ export default function ProfileSidebar() {
       <div className="flex justify-center mb-6">
         <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
           <img
-            src="public/images/image0.jpg"
+            src="/public/images/image0.jpg"
             alt="Profile"
             className="w-full h-full object-cover"
           />
