@@ -6,7 +6,7 @@ export default function ProfileSidebar() {
     // 修改 1: 将 aside 改为 div，因为 Home.jsx 外部已经包裹了 aside
     // 修改 2: 添加 border-[#2d2d2d] 和 rounded-[20px] 以匹配 Home.jsx 中右侧 Main 的风格
     // 修改 3: 添加 p-6 (内边距)，确保内容不紧贴边缘
-    <div className="w-full bg-[#1e1e1e] border border-[#2d2d2d] rounded-[20px] p-6 flex flex-col shadow-lg">
+    <div className="w-full p-6 flex flex-col shadow-lg">
       
       {/* Profile Image - 保持了你的响应式逻辑，但由父容器控制最大宽度 */}
       <div className="flex justify-center mb-6">
