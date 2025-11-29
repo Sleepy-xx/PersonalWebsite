@@ -49,7 +49,7 @@ export default function ProfileSidebar() {
           icon={Github}
           label="GITHUB"
           value="View Profile"
-          href="#"
+          href="https://sleepy-xx.github.io/PersonalWebsite/"
         />
         <ContactItem 
           icon={Linkedin}
