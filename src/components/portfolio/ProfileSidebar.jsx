@@ -4,26 +4,26 @@ import { MapPin, Mail, Github, Linkedin } from 'lucide-react';
 export default function ProfileSidebar() {
   return (
     <aside className="w-full lg:w-80 bg-[#1e1e1e] rounded-3xl p-8 flex flex-col">
-      {/* Profile Image */}
+      {/* Profile Image - 你可以之后替换成自己的照片 */}
       <div className="flex justify-center mb-6">
-        <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-400 to-orange-500">
+        <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
           <img
             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
             alt="Profile"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-90"
           />
         </div>
       </div>
 
-      {/* Name */}
+      {/* Name [cite: 1] */}
       <h1 className="text-2xl font-bold text-white text-center mb-2">
-        Chun-Ho (Hugo) Lin
+        Tsang Kwok Hin
       </h1>
 
-      {/* Tagline Badge */}
+      {/* Tagline Badge [cite: 7] */}
       <div className="flex justify-center mb-8">
         <span className="px-4 py-1.5 bg-[#2a2a2a] text-gray-300 text-sm rounded-full">
-          Fight on ✌️
+          CS Undergraduate @ HKUST
         </span>
       </div>
 
@@ -35,25 +35,27 @@ export default function ProfileSidebar() {
         <ContactItem 
           icon={MapPin}
           label="LOCATION"
-          value="Los Angeles, CA 🇺🇸"
+          value="Hong Kong" 
         />
+        {/* [cite: 2] */}
         <ContactItem 
           icon={Mail}
           label="EMAIL"
-          value="hugo@1chooo.com"
-          href="mailto:hugo@1chooo.com"
+          value="khtsangal@gmail.com"
+          href="mailto:khtsangal@gmail.com"
         />
+        {/* Github 链接如果你有的话可以填写真实的，暂时保留占位符 */}
         <ContactItem 
           icon={Github}
           label="GITHUB"
-          value="@1chooo"
-          href="https://github.com/1chooo"
+          value="View Profile"
+          href="#"
         />
         <ContactItem 
           icon={Linkedin}
           label="LINKEDIN"
-          value="in/1chooo"
-          href="https://linkedin.com/in/1chooo"
+          value="Connect"
+          href="#"
         />
       </div>
 
@@ -62,12 +64,7 @@ export default function ProfileSidebar() {
 
       {/* Footer */}
       <div className="text-center text-sm text-gray-400">
-        <p>© 2025 <a href="#" className="text-amber-400 hover:underline">1chooo</a></p>
-        <div className="flex justify-center gap-4 mt-2">
-          <a href="#" className="hover:text-white transition-colors">RSS</a>
-          <a href="#" className="hover:text-white transition-colors">Terms</a>
-          <a href="#" className="hover:text-white transition-colors">Docs</a>
-        </div>
+        <p>© 2025 Tsang Kwok Hin</p>
       </div>
     </aside>
   );
@@ -77,7 +74,7 @@ function ContactItem({ icon: Icon, label, value, href }) {
   const content = (
     <div className="flex items-start gap-4">
       <div className="p-3 bg-[#2a2a2a] rounded-xl">
-        <Icon className="w-5 h-5 text-amber-400" />
+        <Icon className="w-5 h-5 text-blue-400" />
       </div>
       <div>
         <p className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">{label}</p>
