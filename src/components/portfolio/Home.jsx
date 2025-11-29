@@ -40,7 +40,7 @@ export default function Home() {
       <div className="w-full max-w-[1200px] mt-[60px] mb-[15px] ml-[414px] mr-[414px] flex flex-col lg:flex-row gap-6 px-4 lg:px-0">
         
         {/* 3. 左侧 Sidebar */}
-        <aside className="w-full lg:w-[280px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10 pt-[60px] pl-[30px] pr-[30px] pb-[30px]">
+        <aside className="w-full bg-[#1e1e1f] lg:w-[280px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10 pt-[60px] pl-[30px] pr-[30px] pb-[30px]">
           <ProfileSidebar />
         </aside>
 
