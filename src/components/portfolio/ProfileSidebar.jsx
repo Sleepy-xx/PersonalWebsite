@@ -6,7 +6,20 @@ export default function ProfileSidebar() {
     <aside className="w-full lg:w-80 bg-[#1e1e1e] rounded-3xl p-8 flex flex-col">
       {/* Profile Image - 你可以之后替换成自己的照片 */}
       <div className="flex justify-center mb-6">
-        <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
+        <div className={`
+        /* 默认 (<580px): 80x80 */
+        w-[80px] h-[80px]
+        
+        /* 580px+: 120x120 */
+        min-[580px]:w-[120px] min-[580px]:h-[120px]
+        
+        /* 1250px+: 150x150 */
+        min-[1250px]:w-[150px] min-[1250px]:h-[150px]
+        
+        /* 其他样式保持不变 */
+        rounded-3xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 transition-all duration-300
+        `}>
+        {/* img 标签保持不变 */}
           <img
             src="/PersonalWebsite/image0.jpg"
             alt="Profile"

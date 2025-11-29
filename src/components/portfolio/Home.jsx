@@ -29,27 +29,56 @@ export default function Home() {
   };
 
   return (
-    // 1. 页面容器
-    // pt-[60px]: 对应 sidebar 的 padding-top: 60px 预留空间
-    <div className="min-h-screen bg-[#0d0d0d] pt-[60px] pb-[15px]">
+    // 1. 页面背景与基础外边距
+    // 移动端默认外边距: 15px 12px (m-[15px_12px])
+    <div className="min-h-screen bg-[#0d0d0d] overflow-x-hidden flex justify-center items-start pt-[15px] pb-[15px]">
       
-      {/* 2. 主布局容器 (Main) */}
-      {/* max-w-[1200px]: 对应 max-width: 1200px */}
-      {/* gap-[25px]: 对应 gap: 25px */}
-      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-[25px] px-4 lg:px-0">
+      {/* 2. 主容器 (Main Container) */}
+      <div className={`
+        /* 基础设置 */
+        relative mx-[12px] flex flex-col transition-all duration-300 ease-in-out
+        
+        /* < 580px: 宽度 100% (默认) */
+        w-full
+        
+        /* 580px - 767px: 宽度 520px, 居中 */
+        min-[580px]:w-[520px] min-[580px]:mx-auto
+        
+        /* 768px - 1023px: 宽度 700px */
+        md:w-[700px]
+        
+        /* 1024px - 1249px: 宽度 950px */
+        lg:w-[950px]
+        
+        /* ≥ 1250px: 双栏并排模式 */
+        /* 宽度 auto (被 max-w-1200 限制), Gap 25px */
+        min-[1250px]:w-full min-[1250px]:max-w-[1200px]
+        min-[1250px]:flex-row min-[1250px]:items-stretch min-[1250px]:gap-[25px]
+        
+        /* 中间态垂直间距 30px (当不是双栏时) */
+        gap-[30px] min-[1250px]:gap-[25px]
+      `}>
         
         {/* 3. 左侧 Sidebar 区域 */}
-        {/* lg:sticky: 对应 position: sticky (仅在大屏生效) */}
-        {/* lg:top-[60px]: 对应 top: 60px */}
-        {/* z-10: 对应 z-index: 1 */}
-        {/* lg:self-start: 关键！防止 flex stretch 导致 sticky 失效 */}
-        <div className="lg:sticky lg:top-[60px] lg:self-start z-10 lg:w-[320px] shrink-0">
+        <aside className={`
+          /* 移动端: 宽度 100% */
+          w-full shrink-0
+          
+          /* ≥ 1250px: Sticky 定位, 宽度自适应 (auto), Top 60px */
+          min-[1250px]:w-auto min-[1250px]:sticky min-[1250px]:top-[60px] 
+          min-[1250px]:h-max min-[1250px]:z-10 min-[1250px]:self-start
+        `}>
           <ProfileSidebar />
-        </div>
+        </aside>
 
         {/* 4. 右侧内容区域 (Main Content) */}
-        {/* flex-1: 占据剩余空间 */}
-        <main className="flex-1 bg-[#1a1a1a] rounded-3xl p-6 lg:p-10 min-w-0">
+        <main className={`
+          /* 基础样式 */
+          bg-[#1e1e1e] rounded-3xl border border-white/10 p-6 lg:p-10 shadow-2xl
+          
+          /* ≥ 1250px: 占据 75% 宽度 */
+          w-full min-[1250px]:w-[75%] min-[1250px]:min-w-[75%]
+        `}>
           <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
           {renderContent()}
         </main>
