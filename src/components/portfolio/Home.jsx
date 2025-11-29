@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     // 1. 外层：去掉默认的 p-4 lg:p-8，确保背景铺满
-    <div className="min-h-screen bg-[#0d0d0d]">
+    <div className="min-h-screen bg-[#0d0d0d] overflow-hidden">
       
       {/* 2. 主容器：严格按照图片参数设置 */}
       <div className="max-w-[1200px] mx-auto mt-[60px] mb-[15px] flex flex-col lg:flex-row gap-8">
