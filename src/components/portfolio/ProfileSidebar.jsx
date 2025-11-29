@@ -34,13 +34,13 @@ export default function ProfileSidebar() {
 
       {/* Tagline Badge */}
       <div className="flex justify-center mb-8">
-        <span className="px-3 py-1 text-gray-300 text-xs font-medium rounded-lg border border-[#333]">
+        <span className="px-3 py-1 bg-[#2a2a2a] text-gray-300 text-xs font-medium rounded-lg border border-[#333]">
           CS Undergraduate @ HKUST
         </span>
       </div>
 
       {/* Divider */}
-      <div className="h-px mb-6 w-full" />
+      <div className="h-px bg-[#2d2d2d] mb-6 w-full" />
 
       {/* Contact Info */}
       <div className="space-y-6 flex-1">
@@ -76,7 +76,7 @@ export default function ProfileSidebar() {
       </div>
 
       {/* Divider - 只有在内容很长需要底部copyright时才需要分割，这里可以保留或简化 */}
-      <div className="h-px my-6 w-full" />
+      <div className="h-px bg-[#2d2d2d] my-6 w-full" />
 
       {/* Footer */}
       <div className="text-center">
@@ -89,7 +89,7 @@ export default function ProfileSidebar() {
 function ContactItem({ icon: Icon, label, value, href }) {
   const content = (
     <div className="flex items-center gap-4 group">
-      <div className="p-2.5 rounded-xl border border-[#333] group-hover:border-blue-500/30 group-hover:bg-[#333] transition-colors">
+      <div className="p-2.5 bg-[#2a2a2a] rounded-xl border border-[#333] group-hover:border-blue-500/30 group-hover:bg-[#333] transition-colors">
         <Icon className="w-4 h-4 text-blue-400" />
       </div>
       <div className="overflow-hidden">
