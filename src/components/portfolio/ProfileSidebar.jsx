@@ -8,9 +8,9 @@ export default function ProfileSidebar() {
       <div className="flex justify-center mb-6">
         <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            src="/images/image0.jpg"
             alt="Profile"
-            className="w-full h-full object-cover opacity-90"
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
