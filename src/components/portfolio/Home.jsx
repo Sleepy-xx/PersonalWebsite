@@ -3,11 +3,10 @@ import React, { useState } from 'react';
 import ProfileSidebar from '@/components/portfolio/ProfileSidebar';
 import NavigationTabs from '@/components/portfolio/NavigationTabs';
 import AboutSection from '@/components/portfolio/AboutSection';
-import ProjectsSection from '@/components/portfolio/ProjectsSection';
-import BlogSection from '@/components/portfolio/BlogSection';
+import ProjectsSection from '@/components/portfolio/ProjectsSection'; // ✅ 确保引入 Project
 import TechStackSection from '@/components/portfolio/TechStackSection';
 import ResumeSection from '@/components/portfolio/ResumeSection';
-import GallerySection from '@/components/portfolio/GallerySection';
+// ❌ GallerySection 的引入已删除
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('about');
@@ -16,20 +15,16 @@ export default function Home() {
     switch (activeTab) {
       case 'about':
         return (
-          <>
+          <div className="space-y-16">
             <AboutSection />
-            {/* 原来的 ProjectsSection 和 BlogSection 已经被移除 */}
+            {/* ✅ About 页面只留简介和技术栈，不显示 Project */}
             <TechStackSection />
-          </>
+          </div>
         );
       case 'resume':
         return <ResumeSection />;
       case 'project':
-        return <ProjectsSection />;
-      case 'blog':
-        return <BlogSection />;
-      case 'gallery':
-        return <GallerySection />;
+        return <ProjectsSection />; // ✅ 恢复 Project 独立页面
       default:
         return <AboutSection />;
     }

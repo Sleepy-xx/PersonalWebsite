@@ -4,7 +4,8 @@ import { cn } from '@/lib/utils';
 const tabs = [
   { id: 'about', label: 'About' },
   { id: 'resume', label: 'Resume' },
-  { id: 'gallery', label: 'Gallery' },
+  { id: 'project', label: 'Project' }, // ✅ 加回 Project
+  // gallery 已删除
 ];
 
 export default function NavigationTabs({ activeTab, onTabChange }) {
