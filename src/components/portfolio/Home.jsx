@@ -14,7 +14,7 @@ export default function Home() {
     switch (activeTab) {
       case 'about':
         return (
-          <div className="space-y-16">
+          <div className="space-y-10">
             <AboutSection />
             <TechStackSection />
           </div>
@@ -29,28 +29,28 @@ export default function Home() {
   };
 
   return (
-    // 1. 页面容器
-    // pt-[60px]: 对应 sidebar 的 padding-top: 60px 预留空间
-    <div className="min-h-screen bg-[#0d0d0d] flex justify-center items-start pt-[60px] pb-[15px]">
-  
-  {/* 核心容器：没有 p-4 或 p-8，完全靠 max-w 和 gap */}
-  <div className="w-full max-w-[1200px] flex flex-col lg:flex-row gap-[25px]">
-    
-    {/* 左侧 Sidebar */}
-    {/* 内部才有 padding (p-6) 来撑开文字和边框的距离 */}
-    <aside className="lg:w-auto lg:sticky lg:top-[60px] shrink-0">
-      <div className="bg-[#1e1e1f] rounded-[20px] p-[30px]"> 
-         {/* Sidebar 内容 */}
-      </div>
-    </aside>
+    // 1. 视口容器
+    // 只设置上下的内边距 (pt-60, pb-15) 用于留出顶部和底部的空间
+    // 自身不设左右 padding
+    <div className="min-h-screen bg-[#121212] flex justify-center items-start pt-[60px] pb-[15px]">
+      
+      {/* 2. 核心布局容器 */}
+      {/* 宽度强制为 1200px (max-w-[1200px]) */}
+      {/* 关键点：这里没有 p-4 或 px-4，完全靠 gap-[25px] 来控制间距 */}
+      <div className="w-full max-w-[1200px] flex flex-col lg:flex-row gap-[25px] px-4 lg:px-0">
+        
+        {/* 3. 左侧 Sidebar */}
+        <aside className="w-full lg:w-auto shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10">
+          <ProfileSidebar />
+        </aside>
 
-    {/* 右侧 Content */}
-    {/* 同样，内部才有 padding */}
-    <main className="flex-1 bg-[#1e1e1f] rounded-[20px] p-[30px]">
-      {/* Main 内容 */}
-    </main>
-    
-  </div>
-</div>
+        {/* 4. 右侧 Main Content */}
+        {/* 只有在具体的卡片内部，才会有 padding (p-[30px]) */}
+        <main className="flex-1 bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] p-[30px] shadow-lg min-w-0">
+          <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
+          {renderContent()}
+        </main>
+      </div>
+    </div>
   );
 }
