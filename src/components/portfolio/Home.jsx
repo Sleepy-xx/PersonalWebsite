@@ -29,26 +29,24 @@ export default function Home() {
   };
 
   return (
-    // 1. 页面容器
-    // pt-[60px]: 对应 sidebar 的 padding-top: 60px 预留空间
-    <div className="min-h-screen bg-[#0d0d0d] pt-[60px] pb-[15px]">
+    // 1. 外层容器：设置为 Flex 布局
+    // 作用：防止内部的 margin-top 穿透导致顶部白条，同时铺满黑色背景
+    <div className="min-h-screen bg-[#0d0d0d] flex flex-col items-center">
       
-      {/* 2. 主布局容器 (Main) */}
-      {/* max-w-[1200px]: 对应 max-width: 1200px */}
-      {/* gap-[25px]: 对应 gap: 25px */}
-      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-[25px] px-4 lg:px-0">
+      {/* 2. 主布局容器：严格还原截图参数 */}
+      {/* w-full max-w-[1200px]: 对应宽度 1200 */}
+      {/* mt-[60px]: 对应 margin-top 60 */}
+      {/* mb-[15px]: 对应 margin-bottom 15 */}
+      {/* padding 为 0 (默认就是0，不加 px 类即可) */}
+      <div className="w-full max-w-[1200px] mt-[60px] mb-[15px] flex flex-col lg:flex-row gap-[25px]">
         
-        {/* 3. 左侧 Sidebar 区域 */}
-        {/* lg:sticky: 对应 position: sticky (仅在大屏生效) */}
-        {/* lg:top-[60px]: 对应 top: 60px */}
-        {/* z-10: 对应 z-index: 1 */}
-        {/* lg:self-start: 关键！防止 flex stretch 导致 sticky 失效 */}
-        <div className="lg:sticky lg:top-[60px] lg:self-start z-10 lg:w-[320px] shrink-0">
+        {/* 3. 左侧 Sidebar */}
+        {/* 保持 sticky 定位，top-8 或 top-[60px] 可根据视觉微调，这里设为 0 或 60 均可，配合 margin 60 使用 */}
+        <div className="lg:sticky lg:top-0 lg:self-start z-10 lg:w-[320px] shrink-0">
           <ProfileSidebar />
         </div>
 
-        {/* 4. 右侧内容区域 (Main Content) */}
-        {/* flex-1: 占据剩余空间 */}
+        {/* 4. 右侧 Content */}
         <main className="flex-1 bg-[#1a1a1a] rounded-3xl p-6 lg:p-10 min-w-0">
           <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
           {renderContent()}
