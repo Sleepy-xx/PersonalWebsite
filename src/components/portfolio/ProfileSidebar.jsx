@@ -17,7 +17,7 @@ export default function ProfileSidebar() {
 
       {/* Name [cite: 1] */}
       <h1 className="text-2xl font-bold text-white text-center mb-2">
-        Tsang Kwok Hin
+        TSANG KWOK HIN (HENRY)
       </h1>
 
       {/* Tagline Badge [cite: 7] */}
@@ -64,7 +64,7 @@ export default function ProfileSidebar() {
 
       {/* Footer */}
       <div className="text-center text-sm text-gray-400">
-        <p>© 2025 Tsang Kwok Hin</p>
+        <p>© 2025 TSANG KWOK HIN</p>
       </div>
     </aside>
   );
