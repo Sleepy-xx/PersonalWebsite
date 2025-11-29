@@ -3,23 +3,22 @@ import { MapPin, Mail, Github, Linkedin, Phone } from 'lucide-react';
 
 export default function ProfileSidebar() {
   return (
-    <aside className="w-full  bg-[#1e1e1e] rounded-3xl  flex flex-col">
-      {/* Profile Image - 你可以之后替换成自己的照片 */}
+    // 修改 1: 将 aside 改为 div，因为 Home.jsx 外部已经包裹了 aside
+    // 修改 2: 添加 border-[#2d2d2d] 和 rounded-[20px] 以匹配 Home.jsx 中右侧 Main 的风格
+    // 修改 3: 添加 p-6 (内边距)，确保内容不紧贴边缘
+    <div className="w-full bg-[#1e1e1e] border border-[#2d2d2d] rounded-[20px] p-6 flex flex-col shadow-lg">
+      
+      {/* Profile Image - 保持了你的响应式逻辑，但由父容器控制最大宽度 */}
       <div className="flex justify-center mb-6">
         <div className={`
-        /* 默认 (<580px): 80x80 */
-        w-[80px] h-[80px]
-        
-        /* 580px+: 120x120 */
-        min-[580px]:w-[120px] min-[580px]:h-[120px]
-        
-        /* 1250px+: 150x150 */
-        min-[1250px]:w-[150px] min-[1250px]:h-[150px]
-        
-        /* 其他样式保持不变 */
-        rounded-3xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 transition-all duration-300
+          relative
+          w-[100px] h-[100px]          /* 移动端默认大小 */
+          xl:w-[150px] xl:h-[150px]    /* 大屏断点调整 */
+          rounded-[20px] overflow-hidden 
+          bg-gradient-to-br from-blue-500 to-purple-600 
+          transition-all duration-300
+          shadow-md
         `}>
-        {/* img 标签保持不变 */}
           <img
             src="/PersonalWebsite/image0.jpg"
             alt="Profile"
@@ -28,36 +27,34 @@ export default function ProfileSidebar() {
         </div>
       </div>
 
-      {/* Name [cite: 1] */}
-      <h1 className="text-2xl font-bold text-white text-center mb-2">
+      {/* Name */}
+      <h1 className="text-2xl font-bold text-white text-center mb-2 tracking-tight">
         TSANG KWOK HIN (HENRY)
       </h1>
 
-      {/* Tagline Badge [cite: 7] */}
+      {/* Tagline Badge */}
       <div className="flex justify-center mb-8">
-        <span className="px-4 py-1.5 bg-[#2a2a2a] text-gray-300 text-sm rounded-full">
+        <span className="px-3 py-1 bg-[#2a2a2a] text-gray-300 text-xs font-medium rounded-lg border border-[#333]">
           CS Undergraduate @ HKUST
         </span>
       </div>
 
       {/* Divider */}
-      <div className="h-px bg-gray-700 mb-6" />
+      <div className="h-px bg-[#2d2d2d] mb-6 w-full" />
 
       {/* Contact Info */}
-      <div className="space-y-5 flex-1">
+      <div className="space-y-6 flex-1">
         <ContactItem 
           icon={MapPin}
           label="LOCATION"
           value="Hong Kong" 
         />
-        {/* [cite: 2] */}
         <ContactItem 
           icon={Mail}
           label="EMAIL"
           value="khtsangal@gmail.com"
           href="mailto:khtsangal@gmail.com"
         />
-        {/* Github 链接如果你有的话可以填写真实的，暂时保留占位符 */}
         <ContactItem 
           icon={Github}
           label="GITHUB"
@@ -70,7 +67,6 @@ export default function ProfileSidebar() {
           value="Connect"
           href="#"
         />
-        {/* 新增的电话部分 */}
         <ContactItem 
           icon={Phone}
           label="PHONE"
@@ -79,33 +75,40 @@ export default function ProfileSidebar() {
         />
       </div>
 
-      {/* Divider */}
-      <div className="h-px bg-gray-700 my-6" />
+      {/* Divider - 只有在内容很长需要底部copyright时才需要分割，这里可以保留或简化 */}
+      <div className="h-px bg-[#2d2d2d] my-6 w-full" />
 
       {/* Footer */}
-      <div className="text-center text-sm text-gray-400">
-        <p>© 2025 TSANG KWOK HIN</p>
+      <div className="text-center">
+        <p className="text-xs text-gray-500">© 2025 TSANG KWOK HIN</p>
       </div>
-    </aside>
+    </div>
   );
 }
 
 function ContactItem({ icon: Icon, label, value, href }) {
   const content = (
-    <div className="flex items-start gap-4">
-      <div className="p-3 bg-[#2a2a2a] rounded-xl">
-        <Icon className="w-5 h-5 text-blue-400" />
+    <div className="flex items-center gap-4 group">
+      <div className="p-2.5 bg-[#2a2a2a] rounded-xl border border-[#333] group-hover:border-blue-500/30 group-hover:bg-[#333] transition-colors">
+        <Icon className="w-4 h-4 text-blue-400" />
       </div>
-      <div>
-        <p className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">{label}</p>
-        <p className="text-gray-300 text-sm">{value}</p>
+      <div className="overflow-hidden">
+        <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5 font-semibold">{label}</p>
+        <p className="text-gray-300 text-sm truncate w-full font-medium group-hover:text-white transition-colors">
+          {value}
+        </p>
       </div>
     </div>
   );
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="block hover:opacity-80 transition-opacity">
+      <a 
+        href={href} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="block w-full transition-transform active:scale-[0.98]"
+      >
         {content}
       </a>
     );
