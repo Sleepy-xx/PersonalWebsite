@@ -1,12 +1,10 @@
-"use client";
 import React, { useState } from 'react';
 import ProfileSidebar from '@/components/portfolio/ProfileSidebar';
 import NavigationTabs from '@/components/portfolio/NavigationTabs';
 import AboutSection from '@/components/portfolio/AboutSection';
-import ProjectsSection from '@/components/portfolio/ProjectsSection'; // ✅ 确保引入 Project
+import ProjectsSection from '@/components/portfolio/ProjectsSection';
 import TechStackSection from '@/components/portfolio/TechStackSection';
 import ResumeSection from '@/components/portfolio/ResumeSection';
-// ❌ GallerySection 的引入已删除
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('about');
@@ -17,27 +15,28 @@ export default function Home() {
         return (
           <div className="space-y-16">
             <AboutSection />
-            {/* ✅ About 页面只留简介和技术栈，不显示 Project */}
             <TechStackSection />
           </div>
         );
       case 'resume':
         return <ResumeSection />;
       case 'project':
-        return <ProjectsSection />; // ✅ 恢复 Project 独立页面
+        return <ProjectsSection />;
       default:
         return <AboutSection />;
     }
   };
 
   return (
-    // 1. 外层：去掉默认的 p-4 lg:p-8，确保背景铺满
-    <div className="min-h-screen bg-[#0d0d0d] overflow-hidden">
+    // 1. 外层：移除 overflow-hidden，将 mt/mb 改为 pt/pb
+    // pt-[60px] 替代了原来的 margin-top，pb-[15px] 替代了 margin-bottom
+    <div className="min-h-screen bg-[#0d0d0d] pt-[60px] pb-[15px]">
       
-      {/* 2. 主容器：严格按照图片参数设置 */}
-      <div className="max-w-[1200px] mx-auto mt-[60px] mb-[15px] flex flex-col lg:flex-row gap-8">
+      {/* 2. 主容器：移除 mt/mb，保留 max-w 和 mx-auto */}
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-8">
         
         {/* Left Sidebar */}
+        {/* 3. 侧边栏：lg:sticky 启用固定，top-8 设置吸顶距离 */}
         <div className="lg:sticky lg:top-8 lg:self-start">
           <ProfileSidebar />
         </div>
