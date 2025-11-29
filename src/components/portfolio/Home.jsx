@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import ProfileSidebar from '@/components/portfolio/ProfileSidebar';
 import NavigationTabs from '@/components/portfolio/NavigationTabs';
