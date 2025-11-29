@@ -31,7 +31,7 @@ export default function ProfileSidebar() {
           min-[1250px]:w-[150px] min-[1250px]:h-[150px]
         `}>
           <img
-            src="/PersonalWebsite/me.jpg"
+            src="/PersonalWebsite/image0.jpg"
             alt="Profile"
             className="w-full h-full object-cover"
           />
