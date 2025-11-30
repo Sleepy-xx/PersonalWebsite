@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileSidebar from '@/components/portfolio/ProfileSidebar';
 import NavigationTabs from '@/components/portfolio/NavigationTabs';
+import PageTitle from '@/components/PageTitle'; // 1. 引入新组件
 
 export default function PortfolioLayout({ children, title }) {
   return (
@@ -15,16 +16,14 @@ export default function PortfolioLayout({ children, title }) {
         {/* 右侧 Main Content */}
         <main className="flex-1 bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] p-[30px] shadow-lg min-w-0 relative">
           
-          {/* Header：包含标题和导航栏 */}
           <header className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 pt-12 lg:pt-0">
-            <h2 className="text-3xl font-bold text-white relative pl-5">
-              <span className="absolute left-0 top-1 h-7 w-1.5 bg-amber-400 rounded-sm"></span>
-              {title}
-            </h2>
+            
+            {/* 2. 使用 PageTitle 组件替代原来的 h2 */}
+            <PageTitle title={title} />
+
             <NavigationTabs />
           </header>
 
-          {/* 页面具体内容 */}
           <div className="animate-fade-in">
             {children}
           </div>
