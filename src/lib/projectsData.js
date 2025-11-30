@@ -5,7 +5,7 @@ export const projectsData = [
     category: 'CLOUD',
     period: 'Sep 2025 - Oct 2025',
     description: "A RAG-based AI assistant using AWS Lambda, API Gateway, and Amazon Bedrock. Features streamed responses and enterprise-grade security via AWS WAF.",
-    image: 'https://images.unsplash.com/photo-1667372393119-c85c020799a3?w=800&h=600&fit=crop',
+    image: '/PersonalWebsite/frontend_Webiste.png',
     techStack: ['AWS Lambda', 'Amazon Bedrock', 'API Gateway', 'RAG', 'Python'],
     // 详情页的详细内容（你可以随后扩展成 MDX，现在先用长文本）
     content: `
@@ -23,7 +23,7 @@ export const projectsData = [
     category: 'APP',
     period: 'Sep 2025 - Oct 2025',
     description: 'Hybrid Stateful-Stateless architecture using Go (WhatsMeow) on EC2 and Bedrock Agents. Includes Function Calling for real-time automation.',
-    image: 'https://images.unsplash.com/photo-1611746347169-e6e5fbb315e6?w=800&h=600&fit=crop',
+    image: '/PersonalWebsite/whatsapp.png',
     techStack: ['Go (Golang)', 'EC2', 'Bedrock Agents', 'Function Calling'],
     content: `
       ## Architecture
