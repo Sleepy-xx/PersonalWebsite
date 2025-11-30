@@ -74,21 +74,21 @@ export default function ResumeSection() {
                 <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
                   
                   {/* Top Part: Logo & Title */}
-                  <div className="w-12 h-12 shrink-0 bg-white/5 rounded-lg border border-white/5 overflow-hidden relative">
-                      {item.logo ? (
-                        <img 
-                          src={item.logo} 
-                          alt={item.school} 
-                          // 核心修改：使用 h-full w-full object-cover 
-                          // 这样图片会填满整个盒子，就像你提供的代码片段一样
-                          className="h-full w-full object-cover" 
-                        />
-                      ) : (
-                        <div className="flex items-center justify-center w-full h-full">
-                          <Building2 className="w-6 h-6 text-gray-400" />
-                        </div>
-                      )}
-                    </div>
+                  <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-lg overflow-hidden">
+                    {item.logo ? (
+                      <img 
+                        src={item.logo} 
+                        alt={item.school} 
+                        // 4. 改回 object-contain
+                        // 这样不规则形状的 Logo（如盾牌、校徽）会完整显示，不会被强行裁切填满
+                        className="w-full h-full object-contain" 
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-white/5 flex items-center justify-center rounded-lg">
+                        <Building2 className="w-6 h-6 text-gray-400" />
+                      </div>
+                    )}
+                  </div>
                     
                     {/* Text Content */}
                     <div>
