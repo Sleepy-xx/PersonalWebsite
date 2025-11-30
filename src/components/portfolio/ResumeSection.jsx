@@ -5,8 +5,7 @@ const education = [
   {
     degree: 'B.Eng. Computer Science',
     school: 'Hong Kong University of Science and Technology',
-    // ⚠️ 确保路径正确，svg在 public/images/ 下
-    logo: '/PersonalWebsite/HKUST_symbol.svg', 
+    logo: '/images/hkust.svg', 
     college: 'School of Engineering',
     location: 'Hong Kong',
     period: '2023 - Present',
@@ -15,7 +14,7 @@ const education = [
   {
     degree: 'Higher Diploma in Information Technology',
     school: 'HKU SPACE Community College',
-    logo: '/PersonalWebsite/hkuspace.jpg', 
+    logo: '/images/hkuspace.svg', 
     college: 'College of Life Science',
     location: 'Hong Kong',
     period: '2021 - 2023',
@@ -50,9 +49,9 @@ export default function ResumeSection() {
     <section>
       
       {/* 1. Education Timeline */}
-      <div className="mb-8"> {/* 对应 .timelines margin-bottom: 30px */}
+      <div className="mb-8">
         
-        {/* Header (对应 ResumeTimeLine 中的 title 部分) */}
+        {/* Header */}
         <div className="flex items-center gap-4 mb-6">
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm relative z-10">
             <GraduationCap className="w-5 h-5 text-amber-400" />
@@ -60,41 +59,47 @@ export default function ResumeSection() {
           <h3 className="text-2xl font-bold text-white">Education</h3>
         </div>
 
-        {/* List (对应 .timeline) */}
-        {/* ml-[45px] md:ml-[65px]: 复刻 css 中的 margin-left */}
+        {/* List */}
         <ol className="ml-[45px] md:ml-[65px]">
           {education.map((item, index) => (
-            <li 
-              key={index} 
-              className="relative flex flex-col mb-5 last:mb-0" // 对应 .timeline-cards margin-bottom
-            >
+            <li key={index} className="relative flex flex-col mb-5 last:mb-0">
               
-              {/* --- The Line (对应 ::before) --- */}
-              {/* 只在非最后一个元素显示线条 */}
+              {/* --- 灰线 (The Line) --- */}
+              {/* 仅在“非最后一个”元素显示长连接线，或者根据设计需要全部显示 */}
               {index !== education.length - 1 && (
                 <div 
                   className="absolute w-[1px] bg-[#333]
-                    /* 位置复刻: left: -30px (手机) / -40px (电脑) */
                     left-[-30px] md:left-[-40px] 
-                    /* 高度复刻: calc(100% + 50px) 稍微调整为 full+20px 即可完美连接 */
                     top-[-25px] h-[calc(100%+50px)]" 
                 />
               )}
+              {/* 如果是最后一个元素，依然需要一小段向上的线连接到上一个 */}
+              {index === education.length - 1 && (
+                 <div 
+                 className="absolute w-[1px] bg-[#333]
+                   left-[-30px] md:left-[-40px] 
+                   top-[-25px] h-[30px]" 
+               />
+              )}
 
-              {/* --- The Dot (对应 ::after) --- */}
+              {/* --- 核心修改：实心光环圆点 (The Halo Dot) --- */}
+              {/* 原理：
+                 1. 外层 div (Blocker): 14px 大小，颜色 #1e1e1f (和背景一样)，负责遮挡灰线。
+                 2. 内层 div (Dot): 6px 大小，黄色，居中。
+                 这样一定能做出“镂空”效果。
+              */}
               <div 
-                className="absolute bg-amber-400 rounded-full box-content
-                  /* 位置复刻: top: 5px */
+                className="absolute flex items-center justify-center
                   top-[5px]
-                  /* 左边距复刻 */
-                  left-[-33px] md:left-[-43px]
-                  /* 大小复刻 */
-                  w-[6px] h-[6px] md:w-[8px] md:h-[8px]
-                  /* 阴影复刻: 使用背景色 #1e1e1f 模拟 Halo 效果 */
-                  shadow-[0_0_0_4px_#1e1e1f]"
-              />
+                  /* 计算位置：线在 -30px，盒子宽 14px (半径7)。-30 - 7 = -37px */
+                  left-[-37px] md:left-[-47px]
+                  w-[14px] h-[14px]
+                  bg-[#1e1e1f] rounded-full z-10"
+              >
+                <div className="w-[6px] h-[6px] bg-amber-400 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.4)]" />
+              </div>
 
-              {/* --- Card Content (复用之前的卡片设计) --- */}
+              {/* --- Card Content --- */}
               <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
                 
                 <div className="flex flex-col md:flex-row gap-4 mb-4">
@@ -141,7 +146,7 @@ export default function ResumeSection() {
         </ol>
       </div>
 
-      {/* 2. Experience Timeline (同样的结构) */}
+      {/* 2. Experience Timeline */}
       <div className="mb-8">
         <div className="flex items-center gap-4 mb-6">
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm relative z-10">
@@ -158,9 +163,19 @@ export default function ResumeSection() {
               {index !== experience.length - 1 && (
                 <div className="absolute w-[1px] bg-[#333] left-[-30px] md:left-[-40px] top-[-25px] h-[calc(100%+50px)]" />
               )}
+              {index === experience.length - 1 && (
+                 <div className="absolute w-[1px] bg-[#333] left-[-30px] md:left-[-40px] top-[-25px] h-[30px]" />
+              )}
 
-              {/* Dot */}
-              <div className="absolute bg-amber-400 rounded-full box-content top-[5px] left-[-33px] md:left-[-43px] w-[6px] h-[6px] md:w-[8px] md:h-[8px] shadow-[0_0_0_4px_#1e1e1f]" />
+              {/* Halo Dot */}
+              <div 
+                className="absolute flex items-center justify-center
+                  top-[5px] left-[-37px] md:left-[-47px]
+                  w-[14px] h-[14px]
+                  bg-[#1e1e1f] rounded-full z-10"
+              >
+                <div className="w-[6px] h-[6px] bg-amber-400 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.4)]" />
+              </div>
               
               {/* Card */}
               <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
