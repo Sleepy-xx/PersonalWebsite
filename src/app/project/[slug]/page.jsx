@@ -36,13 +36,12 @@ export default async function ProjectDetail({ params }) {
           <DetailNavigation />
 
           <article>
-            {/* Header */}
-            {/* pt-12: 在移动端留出顶部空间给导航栏 (桌面端导航栏在右上角，不占空间) */}
+            {/* Header: 返回按钮 */}
             <header className="mb-8 pt-12 lg:pt-0">
               
-              {/* 返回按钮 */}
+              {/* ⚠️ 修改重点：href 必须指向 "/project" */}
               <Link 
-                href="/?tab=project"  // ⚠️ 修改这里：添加查询参数
+                href="/project" 
                 className="inline-flex items-center text-gray-300 hover:text-amber-400 transition-colors mb-6 group"
               >
                 <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
