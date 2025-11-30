@@ -21,8 +21,8 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section className="mt-16">
-      <h2 className="text-2xl font-bold text-white mb-8">Featured Projects</h2>
+    <section>
+      
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project) => (

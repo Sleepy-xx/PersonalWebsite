@@ -42,8 +42,7 @@ const skills = [
 export default function ResumeSection() {
   return (
     <section>
-      <h2 className="text-3xl font-bold text-white mb-2">Resume</h2>
-      <div className="w-10 h-1 bg-blue-500 rounded-full mb-10" />
+      
 
       {/* Education */}
       <div className="mb-12">

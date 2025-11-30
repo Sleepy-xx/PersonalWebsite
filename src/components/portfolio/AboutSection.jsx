@@ -3,9 +3,6 @@ import React from 'react';
 export default function AboutSection() {
   return (
     <section>
-      {/* Section Title */}
-      <h2 className="text-3xl font-bold text-white mb-2">About Me</h2>
-      <div className="w-10 h-1 bg-blue-500 rounded-full mb-8" />
 
       {/* Bio [cite: 4, 6, 7] */}
       <div className="text-gray-300 leading-relaxed space-y-4">
