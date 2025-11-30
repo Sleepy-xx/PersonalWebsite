@@ -5,7 +5,7 @@ export const projectsData = [
     category: 'CLOUD',
     period: 'Sep 2025 - Oct 2025',
     description: "A RAG-based AI assistant using AWS Lambda, API Gateway, and Amazon Bedrock. Features streamed responses and enterprise-grade security via AWS WAF.",
-    image: '/PersonalWebsite/frontend_Webiste.png',
+    image: '/PersonalWebsite/frontend_Website.png',
     techStack: ['AWS Lambda', 'Amazon Bedrock', 'API Gateway', 'RAG', 'Python'],
     // 详情页的详细内容（你可以随后扩展成 MDX，现在先用长文本）
     content: `
