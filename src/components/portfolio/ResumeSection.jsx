@@ -1,14 +1,14 @@
 import React from 'react';
-import { GraduationCap, Briefcase, Award, Calendar, MapPin, Building2 } from 'lucide-react';
+// ⚠️ 修复点：添加了 School 图标的引用
+import { GraduationCap, Briefcase, Award, Calendar, MapPin, Building2, School } from 'lucide-react';
 
-// --- 数据部分 (保持你的原有数据，但为了匹配样式，我做了一些字段映射) ---
 const education = [
   {
     degree: 'B.Eng. Computer Science',
     school: 'Hong Kong University of Science and Technology',
-    logo: null, // 如果你有校徽图片url，填在这里，例如 '/images/hkust.png'
-    college: 'School of Engineering', // 新增：学院 (模拟数据)
-    location: 'Hong Kong', // 新增：地点
+    logo: null, 
+    college: 'School of Engineering', 
+    location: 'Hong Kong', 
     period: '2023 - Present',
     description: 'Second Class Honors',
   },
@@ -16,7 +16,7 @@ const education = [
     degree: 'Higher Diploma in Information Technology',
     school: 'HKU SPACE Community College',
     logo: null, 
-    college: 'College of Life Science', // 新增：模拟数据
+    college: 'College of Life Science', 
     location: 'Hong Kong',
     period: '2021 - 2023',
     description: 'First Class Honours',
@@ -118,7 +118,7 @@ export default function ResumeSection() {
         </div>
       </div>
 
-      {/* 2. Experience Timeline (复用相同的样式逻辑) */}
+      {/* 2. Experience Timeline */}
       <div className="mb-12">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm relative z-10">
@@ -165,7 +165,7 @@ export default function ResumeSection() {
         </div>
       </div>
 
-      {/* 3. Skills (保持不变或微调) */}
+      {/* 3. Skills */}
       <div>
         <div className="flex items-center gap-4 mb-6">
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm">
