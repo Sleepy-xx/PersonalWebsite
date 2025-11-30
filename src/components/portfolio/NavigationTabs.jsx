@@ -8,8 +8,6 @@ const tabs = [
   { id: 'about', label: 'About', path: '/' }, // 首页即 About
   { id: 'resume', label: 'Resume', path: '/resume' },
   { id: 'project', label: 'Project', path: '/project' },
-  { id: 'blog', label: 'Blog', path: '/blog' },
-  { id: 'gallery', label: 'Gallery', path: '/gallery' },
 ];
 
 export default function NavigationTabs() {
