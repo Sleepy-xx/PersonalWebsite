@@ -6,7 +6,7 @@ const education = [
   {
     degree: 'B.Eng. Computer Science',
     school: 'Hong Kong University of Science and Technology',
-    logo: '/PersonalWebsite/UST_C3.jpg', 
+    logo: '/PersonalWebsite/HKUST_symbol.svg', 
     college: 'School of Engineering', 
     location: 'Hong Kong', 
     period: '2023 - Present',
@@ -15,7 +15,7 @@ const education = [
   {
     degree: 'Higher Diploma in Information Technology',
     school: 'HKU SPACE Community College',
-    logo: '/PersonalWebsite/HKUST_symbol.svg', 
+    logo: '/PersonalWebsite/HKUSPACE_logo.png', 
     college: 'College of Life Science', 
     location: 'Hong Kong',
     period: '2021 - 2023',
