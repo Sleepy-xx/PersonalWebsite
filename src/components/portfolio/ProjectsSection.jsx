@@ -8,14 +8,14 @@ const projects = [
   {
     title: 'AWS Native Enterprise AI Assistant',
     description: "A RAG-based AI assistant using AWS Lambda, API Gateway, and Amazon Bedrock. Features streamed responses and enterprise-grade security via AWS WAF.",
-    image: 'https://images.unsplash.com/photo-1667372393119-c85c020799a3?w=800&h=600&fit=crop', // 使用通用云/AI图片
-    href: '#',
+    //image: 'https://images.unsplash.com/photo-1667372393119-c85c020799a3?w=800&h=600&fit=crop', // 使用通用云/AI图片
+    //href: '#',
   },
   {
     title: 'WhatsApp Intelligent Assistant',
     description: 'Hybrid Stateful-Stateless architecture using Go (WhatsMeow) on EC2 and Bedrock Agents. Includes Function Calling for real-time automation.',
-    image: 'https://images.unsplash.com/photo-1611746347169-e6e5fbb315e6?w=800&h=600&fit=crop', // 使用通用社交/通讯图片
-    href: '#',
+    //image: 'https://images.unsplash.com/photo-1611746347169-e6e5fbb315e6?w=800&h=600&fit=crop', // 使用通用社交/通讯图片
+    //href: '#',
   },
 ];
 
@@ -30,5 +30,6 @@ export default function ProjectsSection() {
         ))}
       </div>
     </section>
+    
   );
 }

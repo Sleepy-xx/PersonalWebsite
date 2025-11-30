@@ -11,8 +11,8 @@ export default function ProjectCard({ title, description, image, href }) {
         <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
         <p className="text-gray-400 text-sm line-clamp-2 mb-4">{description}</p>
         <div className="flex gap-3">
-            <a href={href} className="text-amber-400 hover:text-white transition-colors"><Github className="w-5 h-5"/></a>
-            <a href={href} className="text-amber-400 hover:text-white transition-colors"><ExternalLink className="w-5 h-5"/></a>
+            {/* <a href={href} className="text-amber-400 hover:text-white transition-colors"><Github className="w-5 h-5"/></a>
+            <a href={href} className="text-amber-400 hover:text-white transition-colors"><ExternalLink className="w-5 h-5"/></a> */}
         </div>
       </div>
     </div>

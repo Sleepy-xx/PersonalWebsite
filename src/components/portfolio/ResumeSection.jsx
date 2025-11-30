@@ -5,7 +5,8 @@ const education = [
   {
     degree: 'B.Eng. Computer Science',
     school: 'Hong Kong University of Science and Technology',
-    logo: '/images/hkust.svg', 
+    // ⚠️ 确保路径正确
+    logo: '/PersonalWebsite/HKUST_symbol.svg', 
     college: 'School of Engineering',
     location: 'Hong Kong',
     period: '2023 - Present',
@@ -14,7 +15,7 @@ const education = [
   {
     degree: 'Higher Diploma in Information Technology',
     school: 'HKU SPACE Community College',
-    logo: '/images/hkuspace.svg', 
+    logo: '/PersonalWebsite/hkuspace.jpg', 
     college: 'College of Life Science',
     location: 'Hong Kong',
     period: '2021 - 2023',
@@ -49,55 +50,61 @@ export default function ResumeSection() {
     <section>
       
       {/* 1. Education Timeline */}
-      <div className="mb-8">
+      <div className="mb-8"> 
         
-        {/* Header */}
+        {/* Header Title */}
         <div className="flex items-center gap-4 mb-6">
+          {/* 顶部图标盒子: w-10 (40px)。中心点在 20px 处 */}
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm relative z-10">
             <GraduationCap className="w-5 h-5 text-amber-400" />
           </div>
           <h3 className="text-2xl font-bold text-white">Education</h3>
         </div>
 
-        {/* List */}
-        <ol className="ml-[45px] md:ml-[65px]">
+        {/* Timeline List */}
+        {/* 核心调整：ml-14 (56px) 留出足够左边距 */}
+        <ol className="ml-14">
           {education.map((item, index) => (
             <li key={index} className="relative flex flex-col mb-5 last:mb-0">
               
               {/* --- 灰线 (The Line) --- */}
-              {/* 仅在“非最后一个”元素显示长连接线，或者根据设计需要全部显示 */}
+              {/* 计算逻辑：
+                 1. 顶部图标宽 40px，中心线在 20px。
+                 2. 当前容器左边距是 56px (ml-14)。
+                 3. 为了让线回到 20px 的位置，left 需要设为 -(56 - 20) = -36px。
+              */}
               {index !== education.length - 1 && (
                 <div 
                   className="absolute w-[1px] bg-[#333]
-                    left-[-30px] md:left-[-40px] 
-                    top-[-25px] h-[calc(100%+50px)]" 
+                    left-[-36px] 
+                    top-[-24px] h-[calc(100%+50px)]" 
                 />
               )}
-              {/* 如果是最后一个元素，依然需要一小段向上的线连接到上一个 */}
+              {/* 最后一个元素只需要一小段向上的线 */}
               {index === education.length - 1 && (
                  <div 
                  className="absolute w-[1px] bg-[#333]
-                   left-[-30px] md:left-[-40px] 
-                   top-[-25px] h-[30px]" 
+                   left-[-36px] 
+                   top-[-24px] h-[30px]" 
                />
               )}
 
-              {/* --- 核心修改：实心光环圆点 (The Halo Dot) --- */}
-              {/* 原理：
-                 1. 外层 div (Blocker): 14px 大小，颜色 #1e1e1f (和背景一样)，负责遮挡灰线。
-                 2. 内层 div (Dot): 6px 大小，黄色，居中。
-                 这样一定能做出“镂空”效果。
+              {/* --- 圆点 (The Dot) --- */}
+              {/* 1. w-2 h-2 (8px) 的黄色圆点。
+                 2. shadow-[0_0_0_4px_#1e1e1f]：这就在圆点周围加了一圈 4px 宽的“背景色边框”。
+                    这层边框会遮挡住背后的线，从而实现你想要的那种“镂空/光环”效果。
+                 3. 位置微调：为了让8px的点居中于1px的线，left 需要比线的 -36px 再往左移 (8-1)/2 ≈ 3.5px。
+                    取整使用 -39.5px 或者用 transform 居中。
               */}
               <div 
-                className="absolute flex items-center justify-center
-                  top-[5px]
-                  /* 计算位置：线在 -30px，盒子宽 14px (半径7)。-30 - 7 = -37px */
-                  left-[-37px] md:left-[-47px]
-                  w-[14px] h-[14px]
-                  bg-[#1e1e1f] rounded-full z-10"
-              >
-                <div className="w-[6px] h-[6px] bg-amber-400 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.4)]" />
-              </div>
+                className="absolute 
+                  top-[6px] 
+                  left-[-39.5px]
+                  w-2 h-2 rounded-full 
+                  bg-amber-400 
+                  z-10 
+                  shadow-[0_0_0_4px_#353535]"
+              />
 
               {/* --- Card Content --- */}
               <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
@@ -146,7 +153,7 @@ export default function ResumeSection() {
         </ol>
       </div>
 
-      {/* 2. Experience Timeline */}
+      {/* 2. Experience Timeline (Same logic applied) */}
       <div className="mb-8">
         <div className="flex items-center gap-4 mb-6">
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm relative z-10">
@@ -155,27 +162,24 @@ export default function ResumeSection() {
           <h3 className="text-2xl font-bold text-white">Experience</h3>
         </div>
 
-        <ol className="ml-[45px] md:ml-[65px]">
+        <ol className="ml-14">
           {experience.map((item, index) => (
             <li key={index} className="relative flex flex-col mb-5 last:mb-0">
               
               {/* Line */}
               {index !== experience.length - 1 && (
-                <div className="absolute w-[1px] bg-[#333] left-[-30px] md:left-[-40px] top-[-25px] h-[calc(100%+50px)]" />
+                <div className="absolute w-[1px] bg-[#333] left-[-36px] top-[-24px] h-[calc(100%+50px)]" />
               )}
               {index === experience.length - 1 && (
-                 <div className="absolute w-[1px] bg-[#333] left-[-30px] md:left-[-40px] top-[-25px] h-[30px]" />
+                 <div className="absolute w-[1px] bg-[#333] left-[-36px] top-[-24px] h-[30px]" />
               )}
 
-              {/* Halo Dot */}
+              {/* Dot with Shadow Ring */}
               <div 
-                className="absolute flex items-center justify-center
-                  top-[5px] left-[-37px] md:left-[-47px]
-                  w-[14px] h-[14px]
-                  bg-[#1e1e1f] rounded-full z-10"
-              >
-                <div className="w-[6px] h-[6px] bg-amber-400 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.4)]" />
-              </div>
+                className="absolute top-[6px] left-[-39.5px]
+                  w-2 h-2 rounded-full bg-amber-400 z-10 
+                  shadow-[0_0_0_4px_#353535]"
+              />
               
               {/* Card */}
               <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
