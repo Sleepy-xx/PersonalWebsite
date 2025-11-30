@@ -6,7 +6,7 @@ const education = [
   {
     degree: 'B.Eng. Computer Science',
     school: 'Hong Kong University of Science and Technology',
-    logo: '/PersonalWebsite/UST_C3.jpg', 
+    logo: '/PersonalWebsite/HKUST_symbol.svg', 
     college: 'School of Engineering', 
     location: 'Hong Kong', 
     period: '2023 - Present',
@@ -15,7 +15,7 @@ const education = [
   {
     degree: 'Higher Diploma in Information Technology',
     school: 'HKU SPACE Community College',
-    logo: '/PersonalWebsite/HKUST_symbol.svg', 
+    logo: '/PersonalWebsite/fb_school_logo.jpg', 
     college: 'College of Life Science', 
     location: 'Hong Kong',
     period: '2021 - 2023',
@@ -74,13 +74,19 @@ export default function ResumeSection() {
                 <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
                   
                   {/* Top Part: Logo & Title */}
-                  <div className="flex flex-col md:flex-row gap-4 mb-4">
-                    {/* School Logo Box */}
-                    <div className="w-12 h-12 shrink-0 bg-white/5 rounded-lg flex items-center justify-center border border-white/5">
+                  <div className="w-12 h-12 shrink-0 bg-white/5 rounded-lg border border-white/5 overflow-hidden relative">
                       {item.logo ? (
-                        <img src={item.logo} alt={item.school} className="w-full h-full object-contain rounded-lg" />
+                        <img 
+                          src={item.logo} 
+                          alt={item.school} 
+                          // 核心修改：使用 h-full w-full object-cover 
+                          // 这样图片会填满整个盒子，就像你提供的代码片段一样
+                          className="h-full w-full object-cover" 
+                        />
                       ) : (
-                        <Building2 className="w-6 h-6 text-gray-400" />
+                        <div className="flex items-center justify-center w-full h-full">
+                          <Building2 className="w-6 h-6 text-gray-400" />
+                        </div>
                       )}
                     </div>
                     
