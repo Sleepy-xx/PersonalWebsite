@@ -1,14 +1,14 @@
 import React from 'react';
-// ⚠️ 修复点：添加了 School 图标的引用
 import { GraduationCap, Briefcase, Award, Calendar, MapPin, Building2, School } from 'lucide-react';
 
 const education = [
   {
     degree: 'B.Eng. Computer Science',
     school: 'Hong Kong University of Science and Technology',
+    // ⚠️ 确保路径正确
     logo: '/PersonalWebsite/HKUST_symbol.svg', 
-    college: 'School of Engineering', 
-    location: 'Hong Kong', 
+    college: 'School of Engineering',
+    location: 'Hong Kong',
     period: '2023 - Present',
     description: 'Second Class Honors',
   },
@@ -16,7 +16,7 @@ const education = [
     degree: 'Higher Diploma in Information Technology',
     school: 'HKU SPACE Community College',
     logo: '/PersonalWebsite/hkuspace.jpg', 
-    college: 'College of Life Science', 
+    college: 'College of Life Science',
     location: 'Hong Kong',
     period: '2021 - 2023',
     description: 'First Class Honours',
@@ -52,6 +52,7 @@ export default function ResumeSection() {
       <div className="mb-12">
         {/* Section Header */}
         <div className="flex items-center gap-4 mb-8">
+          {/* 图标容器：w-10 (40px) -> 中心点在 20px 处 */}
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm relative z-10">
             <GraduationCap className="w-5 h-5 text-amber-400" />
           </div>
@@ -59,39 +60,48 @@ export default function ResumeSection() {
         </div>
 
         {/* Timeline Container */}
-        <div className="relative pl-5">
-          {/* 垂直连接线 (Vertical Line) */}
-          <div className="absolute left-[19px] top-[-20px] bottom-0 w-[2px] bg-[#333]" />
+        {/* 这里不需要 padding，因为我们用绝对定位来控制线条 */}
+        <div className="relative">
+          
+          {/* --- 垂直连接线 (The Line) --- */}
+          {/* left-5 对应 20px，正好是 w-10 图标的中心 */}
+          {/* top-[-20px] 向上延伸连接 header 图标 */}
+          {/* w-[1px] 极细线条 */}
+          <div className="absolute left-5 top-[-20px] bottom-0 w-[1px] bg-[#333]" />
 
           <div className="space-y-8">
             {education.map((item, index) => (
-              <div key={index} className="relative pl-8 md:pl-10">
+              // ml-12 (48px) 为左侧线条留出空间
+              <div key={index} className="relative ml-12">
                 
-                {/* 时间轴节点 (Dot) */}
-                <div className="absolute left-[15px] top-8 w-2.5 h-2.5 bg-amber-400 rounded-full shadow-[0_0_0_4px_#1e1e1f] z-10 box-content" />
+                {/* --- 时间轴节点 (The Dot) --- */}
+                {/* 1. absolute left-[-28px]：
+                       ml-12 是 48px。线条在 page 的 20px 处。
+                       48px - 28px = 20px。所以点会精确落在 20px 的线条上。
+                   2. -translate-x-1/2：确保点的中心对准线条，而不是左边缘。
+                   3. ring-8 ring-[#1e1e1f]：关键！用与背景同色的粗边框模拟“镂空”效果。
+                */}
+                <div className="absolute left-[-28px] top-8 -translate-x-1/2 w-2.5 h-2.5 bg-amber-400 rounded-full z-10 ring-8 ring-[#1e1e1f]" />
 
-                {/* --- 核心卡片样式 --- */}
+                {/* Card */}
                 <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
                   
-                  {/* Top Part: Logo & Title */}
                   <div className="flex flex-col md:flex-row gap-4 mb-4">
-                    {/* School Logo Box */}
+                    {/* Logo Box */}
                     <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-lg overflow-hidden">
                       {item.logo ? (
                         <img 
-                        src={item.logo} 
-                        alt={item.school} 
-                        // 4. 改回 object-contain
-                        // 这样不规则形状的 Logo（如盾牌、校徽）会完整显示，不会被强行裁切填满
-                        className="w-full h-full object-contain" />
+                          src={item.logo} 
+                          alt={item.school} 
+                          className="w-full h-full object-contain" 
+                        />
                       ) : (
                         <div className="w-full h-full bg-white/5 flex items-center justify-center rounded-lg">
-                        <Building2 className="w-6 h-6 text-gray-400" />
-                    </div>
+                           <Building2 className="w-6 h-6 text-gray-400" />
+                        </div>
                       )}
                     </div>
                     
-                    {/* Text Content */}
                     <div>
                       <h4 className="text-lg font-bold text-white leading-tight">{item.school}</h4>
                       <p className="text-gray-300 text-sm font-medium mt-1">{item.degree}</p>
@@ -99,19 +109,15 @@ export default function ResumeSection() {
                     </div>
                   </div>
 
-                  {/* Bottom Part: Badges (Pills) */}
                   <div className="flex flex-wrap gap-3 pt-2">
-                    {/* Badge 1: College/Dept */}
                     <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1e1e1f] rounded-lg border border-white/5 text-xs text-gray-300">
                       <School className="w-3.5 h-3.5 text-amber-400" />
                       <span>{item.college}</span>
                     </div>
-                    {/* Badge 2: Location */}
                     <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1e1e1f] rounded-lg border border-white/5 text-xs text-gray-300">
                       <MapPin className="w-3.5 h-3.5 text-amber-400" />
                       <span>{item.location}</span>
                     </div>
-                    {/* Badge 3: Date */}
                     <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#1e1e1f] rounded-lg border border-white/5 text-xs text-gray-300">
                       <Calendar className="w-3.5 h-3.5 text-amber-400" />
                       <span>{item.period}</span>
@@ -125,7 +131,7 @@ export default function ResumeSection() {
         </div>
       </div>
 
-      {/* 2. Experience Timeline */}
+      {/* 2. Experience Timeline (Same Logic) */}
       <div className="mb-12">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-10 h-10 flex items-center justify-center bg-[#2a2a2a] rounded-xl border border-white/5 shadow-sm relative z-10">
@@ -134,17 +140,18 @@ export default function ResumeSection() {
           <h3 className="text-2xl font-bold text-white">Experience</h3>
         </div>
 
-        <div className="relative pl-5">
-          <div className="absolute left-[19px] top-[-20px] bottom-0 w-[2px] bg-[#333]" />
+        <div className="relative">
+          <div className="absolute left-5 top-[-20px] bottom-0 w-[1px] bg-[#333]" />
 
           <div className="space-y-8">
             {experience.map((item, index) => (
-              <div key={index} className="relative pl-8 md:pl-10">
-                <div className="absolute left-[15px] top-8 w-2.5 h-2.5 bg-amber-400 rounded-full shadow-[0_0_0_4px_#1e1e1f] z-10 box-content" />
+              <div key={index} className="relative ml-12">
+                
+                {/* Dot with Halo */}
+                <div className="absolute left-[-28px] top-8 -translate-x-1/2 w-2.5 h-2.5 bg-amber-400 rounded-full z-10 ring-8 ring-[#1e1e1f]" />
                 
                 <div className="group bg-[#2a2a2a] rounded-2xl p-5 md:p-6 border border-white/5 hover:border-amber-400/30 transition-colors shadow-sm">
                   <div className="flex flex-col md:flex-row gap-4 mb-4">
-                     {/* Icon Box */}
                      <div className="w-12 h-12 shrink-0 bg-white/5 rounded-lg flex items-center justify-center border border-white/5">
                         <Briefcase className="w-6 h-6 text-gray-400" />
                      </div>
