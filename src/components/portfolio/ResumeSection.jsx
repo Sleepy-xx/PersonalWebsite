@@ -15,7 +15,7 @@ const education = [
   {
     degree: 'Higher Diploma in Information Technology',
     school: 'HKU SPACE Community College',
-    logo: '/PersonalWebsite/fb_school_logo.jpg', 
+    logo: '/PersonalWebsite/HKUST_symbol.svg', 
     college: 'College of Life Science', 
     location: 'Hong Kong',
     period: '2021 - 2023',
