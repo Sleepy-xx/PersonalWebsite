@@ -5,50 +5,53 @@ const tabs = [
   { id: 'about', label: 'About' },
   { id: 'resume', label: 'Resume' },
   { id: 'project', label: 'Project' },
+  // 你可以根据需要添加 Blog 和 Gallery
 ];
 
 export default function NavigationTabs({ activeTab, onTabChange }) {
   return (
     <nav
       className={cn(
-        // --- 1. 移动端样式 (保持不变：固定在底部) ---
+        // --- 1. 移动端样式 (保持不变: 底部固定) ---
         "fixed bottom-0 left-0 z-50 w-full",
-        "bg-[#2b2b2c]/75 backdrop-blur-md",
+        "bg-[#2b2b2c]/90 backdrop-blur-md", //稍微加深一点背景，提高对比度
         "border-t border-white/10 rounded-t-xl",
-        "shadow-lg transition-all duration-300 ease-in-out",
+        "shadow-[0_-4px_20px_rgba(0,0,0,0.3)] transition-all duration-300 ease-in-out",
 
-        // --- 2. 桌面端样式 (关键修改) ---
-        // 重置定位属性，取消 fixed
-        "lg:static lg:w-auto lg:bg-transparent lg:shadow-none lg:border-none lg:rounded-none",
-        
-        // 核心魔法：使用 float-right 让它浮动到父容器的右侧
-        // 这样它下方的 "About Me" 标题会自动流向左侧，形成并排效果
-        "lg:float-right lg:clear-none",
-        
-        // 微调位置，确保视觉上与标题对齐
-        "lg:mt-1" 
+        // --- 2. 桌面端样式 (完全复刻参考效果) ---
+        // 关键点：absolute top-0 right-0
+        "lg:absolute lg:top-0 lg:right-0 lg:bottom-auto lg:left-auto",
+        "lg:w-max lg:h-auto",
+        "lg:bg-transparent lg:border-none lg:shadow-none lg:rounded-none",
+        "lg:z-10" // 确保在内容之上
       )}
     >
       <ul className={cn(
-        "flex flex-wrap justify-center items-center px-2.5 py-4",
-        // 桌面端：消除内边距，让它紧贴右上角
-        "lg:p-0 lg:gap-6"
+        "flex flex-wrap justify-center items-center px-4 py-3",
+        // 桌面端布局调整
+        "lg:p-6 lg:gap-8" 
       )}>
         {tabs.map((tab) => (
-          <li key={tab.id} className="list-none">
+          <li key={tab.id} className="relative group list-none">
             <button
               onClick={() => onTabChange(tab.id)}
               className={cn(
-                "block text-sm font-medium transition-colors duration-300",
-                "hover:text-amber-400/80 focus:text-amber-400/80",
-                "text-[13px] md:text-[14px] lg:text-[15px]",
+                "relative block px-2 py-1 text-sm font-bold transition-colors duration-300",
+                "text-[13px] md:text-[15px]", // 参考网站的字号
 
                 activeTab === tab.id
-                  ? "text-amber-400 font-bold"
-                  : "text-gray-300"
+                  ? "text-amber-400" // 激活状态颜色
+                  : "text-gray-400 hover:text-amber-400" // 未激活状态
               )}
             >
               {tab.label}
+              
+              {/* --- 新增：复刻参考网站的下划线动画效果 --- */}
+              {/* 如果当前是激活状态，显示下划线 */}
+              <span className={cn(
+                "absolute bottom-0 left-0 h-[2px] bg-amber-400 transition-all duration-300 ease-out",
+                activeTab === tab.id ? "w-full" : "w-0 group-hover:w-full"
+              )}/>
             </button>
           </li>
         ))}
