@@ -1,14 +1,26 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProfileSidebar from '@/components/portfolio/ProfileSidebar';
 import NavigationTabs from '@/components/portfolio/NavigationTabs';
 import AboutSection from '@/components/portfolio/AboutSection';
 import ProjectsSection from '@/components/portfolio/ProjectsSection';
 import TechStackSection from '@/components/portfolio/TechStackSection';
 import ResumeSection from '@/components/portfolio/ResumeSection';
+import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('about');
+  const searchParams = useSearchParams(); // 3. 获取 URL 参数钩子
+  
+
+  // 4. 新增：监听 URL 参数变化，自动切换 Tab
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    // 如果 URL 里有 tab 参数 (比如 ?tab=project)，就切换过去
+    if (tab && ['about', 'resume', 'project'].includes(tab)) {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
 
   const getPageTitle = () => {
     switch (activeTab) {

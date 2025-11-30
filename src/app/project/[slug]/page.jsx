@@ -42,7 +42,7 @@ export default async function ProjectDetail({ params }) {
               
               {/* 返回按钮 */}
               <Link 
-                href="/" 
+                href="/?tab=project"  // ⚠️ 修改这里：添加查询参数
                 className="inline-flex items-center text-gray-300 hover:text-amber-400 transition-colors mb-6 group"
               >
                 <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
