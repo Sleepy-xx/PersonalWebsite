@@ -60,12 +60,15 @@ export default async function ProjectDetail({ params }) {
 
                 {/* 作者与时间信息 */}
                 <div className="flex items-center gap-3 pt-2">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-inner">
-                    {/* 显示作者首字母，如果没有作者名则显示 'H' */}
-                    {project.author ? project.author[0] : 'H'}
+                  <div className="h-10 w-10 rounded-full overflow-hidden border border-white/10">
+                    <img 
+                      src="/PersonalWebsite/image0.jpg" // ⚠️ 这里填你头像的真实路径 (参考你 Sidebar 用的图片)
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="text-sm">
-                    <div className="text-white font-medium">{project.author || 'Hugo Lin'}</div>
+                    <div className="text-white font-medium">{project.author || 'TSANG KWOK HIN'}</div>
                     <div className="text-gray-500 text-xs mt-0.5">{project.period} · 3 min read</div>
                   </div>
                 </div>
