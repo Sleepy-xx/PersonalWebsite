@@ -75,7 +75,8 @@ export default async function ProjectDetail({ params }) {
                   <div className="text-sm">
                     <div className="text-white font-medium">{frontmatter.author.name}</div>
                     <div className="text-gray-500 text-xs mt-0.5">
-                        {frontmatter.startDate} - {frontmatter.endDate || 'Present'}
+                        {frontmatter.startDate}
+                        {frontmatter.endDate ? ` - ${frontmatter.endDate}` : ''}
                     </div>
                   </div>
                 </div>
