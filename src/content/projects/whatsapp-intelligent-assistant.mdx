@@ -1,0 +1,41 @@
+---
+title: "WhatsApp Intelligent Assistant"
+excerpt: "Hybrid Stateful-Stateless architecture using Go (WhatsMeow) on EC2 and Bedrock Agents. Includes Function Calling for real-time automation."
+category: "App"
+startDate: "2025-09"
+endDate: "2025-10"
+image: "/images/whatsapp.png"
+techStack:
+  - Go (Golang)
+  - EC2
+  - Bedrock Agents
+  - Function Calling
+author:
+  name: "Guoxuan Zeng"
+  avatar: "/images/avatar.jpg"
+demo: "https://your-demo-link.com"
+code: "https://github.com/your-username/whatsapp-bot"
+---
+
+![WhatsApp Intelligent Assistant](/images/whatsapp.png)
+
+## Overview
+
+Designed a hybrid stateful-stateless system that integrates WhatsApp with advanced AI agents. [cite_start]This bot serves as a personal assistant capable of performing real-world actions through function calling[cite: 1].
+
+## Stack
+
+- **Runtime**: Go (Golang) with WhatsMeow library
+- **Infrastructure**: AWS EC2 (t3.micro)
+- **AI Agent**: Amazon Bedrock Agents
+- **Data Pipeline**: S3 + Lambda
+
+## Key Highlights
+
+### Hybrid Architecture
+- **Stateful**: Running Go application on EC2 to maintain WhatsApp socket connection.
+- **Stateless**: Offloading heavy processing to Serverless Lambda functions.
+
+### Intelligent Automation
+- Utilized **Function Calling** to allow the AI to trigger external APIs (e.g., calendar booking, data lookup).
+- Engineered a zero-cost **ETL pipeline** syncing Google Sheets to S3 for dynamic knowledge base updates.
