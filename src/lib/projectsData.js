@@ -23,7 +23,7 @@ export const projectsData = [
     category: 'APP',
     period: 'Sep 2025 - Oct 2025',
     description: 'Hybrid Stateful-Stateless architecture using Go (WhatsMeow) on EC2 and Bedrock Agents. Includes Function Calling for real-time automation.',
-    image: '/PersonalWebsite/whatsapp.png',
+    image: '/PersonalWebsite/whatsapp-16-9.png',
     techStack: ['Go (Golang)', 'EC2', 'Bedrock Agents', 'Function Calling'],
     content: `
       ## Architecture
