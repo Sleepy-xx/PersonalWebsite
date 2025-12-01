@@ -59,13 +59,13 @@ export default function ProfileSidebar() {
           icon={Github}
           label="GITHUB"
           value="View Profile"
-          href="https://sleepy-xx.github.io/PersonalWebsite/"
+          href="https://github.com/Sleepy-xx"
         />
         <ContactItem 
           icon={Linkedin}
           label="LINKEDIN"
           value="Connect"
-          href="#"
+          href="https://www.linkedin.com/in/henry-tsang-810457300/"
         />
         <ContactItem 
           icon={Phone}
