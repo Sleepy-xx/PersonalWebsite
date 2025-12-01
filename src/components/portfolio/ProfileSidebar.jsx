@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Mail, Github, Linkedin, Phone } from 'lucide-react';
-import IconBox from './IconBox'; // 1. 引入 IconBox 组件来复用样式
+import IconBox from './IconBox';
 
 export default function ProfileSidebar() {
   return (
@@ -28,42 +28,43 @@ export default function ProfileSidebar() {
 
       {/* 3. 联系信息列表 */}
       <div className="space-y-6 flex-1">
+        {/* ⚠️ 修改重点：
+           我已经删除了所有 ContactItem 里的 href="..." 属性。
+           现在它们只是纯文本展示，鼠标放上去不会有链接效果。
+        */}
+        
         <ContactItem 
           icon={MapPin}
           label="LOCATION"
           value="Hong Kong" 
         />
+        
         <ContactItem 
           icon={Mail}
           label="EMAIL"
           value="khtsangal@gmail.com"
-          href="mailto:khtsangal@gmail.com"
         />
-        {/* 把 Github 和 Linkedin 加回列表，因为底部的删掉了 */}
+        
         <ContactItem 
           icon={Github}
           label="GITHUB"
           value="View Profile"
-          href="https://sleepy-xx.github.io/PersonalWebsite/"
         />
+        
         <ContactItem 
           icon={Linkedin}
           label="LINKEDIN"
           value="Connect"
-          href="#"
         />
+        
         <ContactItem 
           icon={Phone}
           label="PHONE"
           value="(+852) 52662629"
-          href="tel:+85252662629"
         />
       </div>
 
       <div className="h-px bg-[#2d2d2d] my-6 w-full" />
-
-      {/* 4. 底部区域 */}
-      {/* ⚠️ 已移除底部的 SocialLinks (红色框部分) */}
 
       <div className="text-center">
         <p className="text-xs text-gray-500">© 2025 TSANG KWOK HIN</p>
@@ -72,24 +73,26 @@ export default function ProfileSidebar() {
   );
 }
 
-// 辅助组件：列表项
+// 辅助组件
 function ContactItem({ icon: Icon, label, value, href }) {
   const content = (
-    <div className="flex items-center gap-4 group">
+    <div className="flex items-center gap-4 cursor-default"> 
       
-      {/* ⚠️ 修改重点：这里直接使用 IconBox */}
-      {/* 这样上面的图标就会拥有和原来底部图标一模一样的渐变边框效果 */}
       <IconBox icon={Icon} />
 
       <div className="overflow-hidden">
         <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5 font-semibold">{label}</p>
-        <p className="text-gray-300 text-sm truncate w-full font-medium group-hover:text-white transition-colors">
+        
+        {/* 2. 删除了 "group-hover:text-white" */}
+        {/* 现在文字颜色固定为 text-gray-300，鼠标放上去也不会变白了 */}
+        <p className="text-gray-300 text-sm truncate w-full font-medium transition-colors">
           {value}
         </p>
       </div>
     </div>
   );
 
+  // 如果传入了 href，才渲染成链接；否则直接渲染 content
   if (href) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className="block w-full transition-transform active:scale-[0.98]">
