@@ -34,7 +34,7 @@ export default function ProjectCard({
             <img 
               src={image} 
               alt={title} 
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" 
             />
           </div>
 
