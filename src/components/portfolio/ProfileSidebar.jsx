@@ -76,29 +76,41 @@ export default function ProfileSidebar() {
 // 辅助组件
 function ContactItem({ icon: Icon, label, value, href }) {
   const content = (
-    <div className="flex items-center gap-4 cursor-default"> 
+    <div className="flex items-center gap-4"> 
       
+      {/* 图标：保持静态 */}
       <IconBox icon={Icon} />
 
-      <div className="overflow-hidden">
-        <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5 font-semibold">{label}</p>
+      {/* 文字区域：根据是否有链接来决定是否有交互效果 */}
+      <div 
+        className={`overflow-hidden transition-all ${
+          href ? 'group cursor-pointer' : 'cursor-default'
+        }`}
+      >
+        <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-0.5 font-semibold">
+          {label}
+        </p>
         
-        {/* 2. 删除了 "group-hover:text-white" */}
-        {/* 现在文字颜色固定为 text-gray-300，鼠标放上去也不会变白了 */}
-        <p className="text-gray-300 text-sm truncate w-full font-medium transition-colors">
+        <p 
+          className={`text-gray-300 text-sm truncate w-full font-medium transition-colors ${
+            href ? 'group-hover:text-blue-400' : ''
+          }`}
+        >
           {value}
         </p>
       </div>
     </div>
   );
 
-  // 如果传入了 href，才渲染成链接；否则直接渲染 content
+  // 如果有链接，包裹 a 标签
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="block w-full transition-transform active:scale-[0.98]">
+      <a href={href} target="_blank" rel="noopener noreferrer" className="block w-full active:scale-[0.98] transition-transform">
         {content}
       </a>
     );
   }
+  
+  // 如果没有链接 (如 Location)，直接返回内容，不带 a 标签
   return content;
 }
