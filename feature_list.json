@@ -26,7 +26,7 @@
       "status": "done",
       "priority": "high",
       "category": "site",
-      "notes": "已发现 `/` 路由、`PortfolioLayout`、`AboutSection` 和 `TechStackSection`。本轮未运行构建或启动命令。"
+      "notes": "已发现 `/` 路由、`PortfolioLayout`、`AboutSection` 和 `TechStackSection`。首页入口已统一保留为 `src/app/page.jsx`。本轮已通过 `npm run lint` 和 `npm run build`。"
     },
     {
       "id": "profile-001",
@@ -35,7 +35,7 @@
       "status": "done",
       "priority": "high",
       "category": "profile",
-      "notes": "实现位于 `src/components/portfolio/ProfileSidebar.jsx`，静态资源主要来自 `public/`。"
+      "notes": "实现位于 `src/components/portfolio/ProfileSidebar.jsx`，静态资源主要来自 `public/`。本轮将头像改为 `next/image` 并补充具体 alt。"
     },
     {
       "id": "nav-001",
@@ -44,7 +44,7 @@
       "status": "done",
       "priority": "high",
       "category": "navigation",
-      "notes": "实现位于 `src/components/portfolio/NavigationTabs.jsx`，使用 `usePathname()` 判断当前路由。"
+      "notes": "实现位于 `src/components/portfolio/NavigationTabs.jsx`，使用 `usePathname()` 判断当前路由。本轮将导航改为断点布局：1280/1440 等 xl 大屏下嵌入主内容卡片右上角，1024/768/390/360 等中小屏下在页面顶部作为独立导航。保留暗色玻璃背景、border、圆角、amber active 文本和下划线；未重新引入 bottom fixed nav，未添加 `pb-24`/`lg:pb-0` 底部预留。已使用 Playwright CLI Skill 真实 Chromium 检查 `/PersonalWebsite/`、`/PersonalWebsite/resume/`、`/PersonalWebsite/project/` 和 `/PersonalWebsite/project/aws-native-ai-assistant/` 在 1440x900、1280x800、1024x768、768x1024、390x844、360x740 下均无横向滚动、无 fixed 底栏、CSS/图片正常、控制台无 error；截图保存在 `output/playwright/nav-responsive/`。"
     },
     {
       "id": "resume-001",
@@ -62,7 +62,7 @@
       "status": "done",
       "priority": "high",
       "category": "projects",
-      "notes": "已发现 `/project` 路由，使用 `getAllProjects()` 读取 `src/content/projects/*.mdx`。"
+      "notes": "已发现 `/project` 路由，使用 `getAllProjects()` 读取 `src/content/projects/*.mdx`。本轮移除了无交互筛选按钮语义。"
     },
     {
       "id": "projects-002",
@@ -80,7 +80,7 @@
       "status": "in_progress",
       "priority": "medium",
       "category": "content",
-      "notes": "已存在 AWS Native Enterprise AI Assistant 和 WhatsApp Intelligent Assistant 两个项目。日期字段格式和拼写仍可后续统一。"
+      "notes": "已存在 AWS Native Enterprise AI Assistant 和 WhatsApp Intelligent Assistant 两个项目。本轮修正了 frontmatter 中 November 的拼写。"
     },
     {
       "id": "deploy-001",
@@ -89,7 +89,7 @@
       "status": "done",
       "priority": "high",
       "category": "deployment",
-      "notes": "已发现 `.github/workflows/deploy.yml`，构建 `./out` 并使用 `actions/deploy-pages@v4` 发布。未在本轮触发部署。"
+      "notes": "已发现 `.github/workflows/deploy.yml`，构建 `./out` 并使用 `actions/deploy-pages@v4` 发布。本轮补充 `basePath: \"/PersonalWebsite\"` 以适配 GitHub Pages 项目站点子路径；未触发远端部署。"
     },
     {
       "id": "docs-001",
@@ -107,43 +107,43 @@
       "status": "done",
       "priority": "high",
       "category": "documentation",
-      "notes": "本轮已新增并整理 `ARCHITECTURE.md`。"
+      "notes": "本轮已整理 `ARCHITECTURE.md`，并同步记录 Gallery/Blog 移除、SEO metadata 和 GitHub Pages basePath 配置。"
     },
     {
       "id": "maintenance-001",
       "name": "标准启动和验证流程",
       "description": "确保 `init.sh`、`package.json` 脚本和仓库约定的验证路径保持一致。",
-      "status": "blocked",
+      "status": "done",
       "priority": "high",
       "category": "maintenance",
-      "notes": "`init.sh` 当前调用 `npm test`，但 `package.json` 未发现 `test` 脚本。本轮任务限制为文档更新，未修改脚本或依赖。"
+      "notes": "`init.sh` 为安全启动说明脚本，当前与 `package.json` 中的 `lint` 和 `build` 验证命令一致；本轮恢复了可执行权限，并已成功运行 `./init.sh`。"
     },
     {
       "id": "cleanup-001",
       "name": "首页入口文件确认",
       "description": "确认 `src/app/page.jsx` 和 `src/app/page.js` 同时存在时的构建行为，并决定是否需要保留单一入口。",
-      "status": "unknown",
+      "status": "done",
       "priority": "medium",
       "category": "maintenance",
-      "notes": "当前两个文件内容相近。本轮任务限制不允许移动、删除或重命名文件，因此仅记录为待确认。"
+      "notes": "已删除重复的 `src/app/page.js`，保留 `src/app/page.jsx` 作为唯一首页入口。"
     },
     {
       "id": "gallery-001",
       "name": "图片画廊功能",
-      "description": "提供图片网格、分类筛选和 lightbox 预览。",
-      "status": "unknown",
+      "description": "历史计划中的图片网格、分类筛选和 lightbox 预览；当前个人网站不再保留该功能。",
+      "status": "done",
       "priority": "low",
       "category": "content",
-      "notes": "已发现 `GallerySection.jsx` 组件，但未在当前主导航页面中确认接入。"
+      "notes": "本轮确认 Gallery 未接入正式路由或导航，已删除未使用的 `GallerySection.jsx` 和 `PhotoGallery.jsx`。未删除 `public/` 静态资源，因为未发现明确 Gallery 专属本地图片。"
     },
     {
       "id": "blog-001",
       "name": "文章展示功能",
-      "description": "展示文章列表或写作内容入口。",
-      "status": "unknown",
+      "description": "历史计划中的文章列表或写作内容入口；当前个人网站不再保留示例 Blog 功能。",
+      "status": "done",
       "priority": "low",
       "category": "content",
-      "notes": "已发现 `BlogSection.jsx` 和 `BlogPostCard.jsx`，但未在当前主导航页面中确认接入；其中示例内容可能不是最终个人资料。"
+      "notes": "本轮确认 Blog 未接入正式路由或导航，且示例内容不是当前个人网站正式内容，已删除 `BlogSection.jsx` 和 `BlogPostCard.jsx`。"
     }
   ]
 }

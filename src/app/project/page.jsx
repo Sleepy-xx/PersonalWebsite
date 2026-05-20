@@ -11,10 +11,10 @@ export default function ProjectPage() {
     <PortfolioLayout title="Projects">
       <section>
         <div className="flex gap-6 mb-8 text-sm font-medium">
-            <button className="text-amber-400 relative">
+            <div className="text-amber-400 relative">
             All ({projects.length})
             <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-amber-400 rounded-full" />
-            </button>
+            </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

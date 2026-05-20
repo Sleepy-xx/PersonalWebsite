@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { MapPin, Mail, Github, Linkedin, Phone } from 'lucide-react';
 import IconBox from './IconBox';
 
@@ -9,7 +10,14 @@ export default function ProfileSidebar() {
       {/* 1. 头像 */}
       <div className="flex justify-center mb-6">
         <div className="relative w-[100px] h-[100px] xl:w-[150px] xl:h-[150px] rounded-[20px] overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 transition-all duration-300 shadow-md">
-          <img src="/PersonalWebsite/image0.jpg" alt="Profile" className="w-full h-full object-cover" />
+          <Image
+            src="/PersonalWebsite/image0.jpg"
+            alt="TSANG KWOK HIN (HENRY)"
+            fill
+            sizes="(min-width: 1280px) 150px, 100px"
+            className="object-cover"
+            priority
+          />
         </div>
       </div>
 

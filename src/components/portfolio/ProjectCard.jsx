@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link'; // 引入 Link
+import Image from 'next/image';
 
 export default function ProjectCard({ 
   title, 
@@ -31,10 +32,12 @@ export default function ProjectCard({
           
           {/* 1. 图片区域 */}
           <div className="relative h-48 w-full overflow-hidden shrink-0 bg-black/20">
-            <img 
-              src={image} 
-              alt={title} 
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+            <Image
+              src={image}
+              alt={title}
+              fill
+              sizes="(min-width: 768px) 384px, calc(100vw - 32px)"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
 

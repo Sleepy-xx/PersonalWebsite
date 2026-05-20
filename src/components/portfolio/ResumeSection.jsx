@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { GraduationCap, Briefcase, Award, Calendar, MapPin, Building2, School } from 'lucide-react';
 
 const education = [
@@ -105,7 +106,13 @@ export default function ResumeSection() {
                   <div className="flex flex-col md:flex-row gap-4 mb-4">
                     <div className="w-12 h-12 shrink-0 flex items-center justify-center rounded-lg overflow-hidden">
                       {item.logo ? (
-                        <img src={item.logo} alt={item.school} className="w-full h-full object-contain" />
+                        <Image
+                          src={item.logo}
+                          alt={`${item.school} logo`}
+                          width={48}
+                          height={48}
+                          className="w-full h-full object-contain"
+                        />
                       ) : (
                         <div className="w-full h-full bg-white/5 flex items-center justify-center rounded-lg">
                           <Building2 className="w-6 h-6 text-gray-400" />

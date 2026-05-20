@@ -10,21 +10,21 @@ const tabs = [
   { id: 'project', label: 'Project', path: '/project' },
 ];
 
-export default function NavigationTabs() {
+export default function NavigationTabs({ className }) {
   const pathname = usePathname();
 
   return (
     <nav
       className={cn(
-        "fixed bottom-0 left-0 z-50 w-full bg-[#2b2b2c]/90 backdrop-blur-md border-t border-white/10 rounded-t-2xl shadow-lg transition-all duration-300 ease-in-out",
-        "lg:absolute lg:top-0 lg:right-0 lg:bottom-auto lg:left-auto lg:w-max lg:h-auto lg:z-10",
-        "lg:bg-[#2b2b2c]/75 lg:backdrop-blur-md lg:border lg:border-white/10",
-        "lg:rounded-tr-[20px] lg:rounded-bl-[20px] lg:rounded-tl-none lg:rounded-br-none"
+        "w-full bg-[#2b2b2c]/75 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition-all duration-300 ease-in-out",
+        "sm:w-max",
+        className
       )}
     >
       <ul className={cn(
-        "flex flex-wrap justify-center items-center px-4 py-3",
-        "lg:px-6 lg:py-4 lg:gap-8" 
+        "flex flex-nowrap items-center justify-center gap-4 px-4 py-3",
+        "sm:gap-6",
+        "lg:px-6 lg:gap-8"
       )}>
         {tabs.map((tab) => {
           // 判断当前路径是否匹配
@@ -38,7 +38,7 @@ export default function NavigationTabs() {
               <Link
                 href={tab.path}
                 className={cn(
-                  "relative block text-sm font-bold transition-colors duration-300",
+                  "relative inline-flex min-h-11 min-w-[4.5rem] items-center justify-center px-2 py-2 text-center text-sm font-bold transition-colors duration-300",
                   "text-[13px] md:text-[15px]",
                   isActive ? "text-amber-400" : "text-gray-400 hover:text-amber-400"
                 )}

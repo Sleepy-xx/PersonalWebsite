@@ -118,6 +118,7 @@ npm run lint
 `next.config.mjs` 中已设置：
 
 - `output: "export"`：启用静态导出。
+- `basePath: "/PersonalWebsite"`：适配 GitHub Pages 项目站点子路径。
 - `images.unoptimized: true`：适配 GitHub Pages 不支持 Next.js 默认图片优化的限制。
 
 站点最终访问地址以 GitHub Pages 配置和 Actions 输出为准。
@@ -125,8 +126,8 @@ npm run lint
 ## 后续计划 / TODO
 
 - 补充更多项目 MDX 内容和外部链接。
-- 确认 `init.sh` 中的标准验证命令是否与当前 `package.json` 保持一致。
-- 根据需要完善 Gallery、Blog 等未接入导航的组件或移除未使用内容。
+- 定期运行 `./init.sh`、`npm run lint` 和 `npm run build`，保持启动与验证路径可用。
+- 根据线上 GitHub Pages 地址确认导航链接、图片路径和项目详情页路径。
 - 持续维护 `feature_list.json`，记录功能状态、优先级和验证证据。
 
 ## 维护说明

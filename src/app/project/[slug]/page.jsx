@@ -31,26 +31,28 @@ export default async function ProjectDetail({ params }) {
 
   return (
     <div className="min-h-screen bg-[#121212] flex flex-col items-center isolate">
-      <div className="w-full max-w-[1200px] mt-[60px] mb-[15px] mx-auto flex flex-col lg:flex-row gap-6 px-4 lg:px-0">
+      <div className="w-full max-w-[1200px] mt-[60px] mb-[15px] mx-auto px-4 lg:px-0">
+        <DetailNavigation className="mb-6 flex justify-center xl:hidden" />
+
+        <div className="flex flex-col lg:flex-row gap-6">
         
-        <aside className="w-full bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] lg:w-[350px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10 pt-[60px] pl-[30px] pr-[30px] pb-[30px]">
-          <ProfileSidebar />
-        </aside>
+          <aside className="w-full bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] lg:w-[350px] shrink-0 lg:sticky lg:top-[60px] lg:self-start z-10 pt-[60px] pl-[30px] pr-[30px] pb-[30px]">
+            <ProfileSidebar />
+          </aside>
 
-        <main className="flex-1 bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] p-[30px] shadow-lg min-w-0 relative animate-fade-in">
-          
-          <DetailNavigation />
+          <main className="flex-1 bg-[#1e1e1f] border border-[#2d2d2d] rounded-[20px] p-[30px] xl:pt-[92px] shadow-lg min-w-0 relative animate-fade-in">
+            <DetailNavigation className="hidden xl:block absolute top-0 right-0 z-20 [&_nav]:rounded-tl-none [&_nav]:rounded-br-none" />
 
-          <article>
-            {/* Header */}
-            <header className="mb-8 pt-12 lg:pt-0">
-              <Link 
-                href="/project" 
-                className="inline-flex items-center text-gray-300 hover:text-amber-400 transition-colors mb-6 group"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-                <span className="font-medium text-sm">Back To Project</span>
-              </Link>
+            <article>
+              {/* Header */}
+              <header className="mb-8">
+                <Link 
+                  href="/project" 
+                  className="inline-flex items-center text-gray-300 hover:text-amber-400 transition-colors mb-6 group"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+                  <span className="font-medium text-sm">Back To Project</span>
+                </Link>
 
               <div className="space-y-4">
                 <div className="text-amber-400 text-xs font-bold tracking-wider uppercase">
@@ -96,8 +98,9 @@ export default async function ProjectDetail({ params }) {
                <MDXRemote source={content} components={components} />
             </div>
 
-          </article>
-        </main>
+            </article>
+          </main>
+        </div>
       </div>
     </div>
   );
